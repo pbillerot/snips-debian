@@ -1,7 +1,7 @@
 # snips-metro
 Assistant Snips en Python3 pour Debian Buster
 
-## Installation de Debina Buster dans une VM VirtualBox
+## Installation de Debian Buster dans une VM VirtualBox
 
 - Installation minimum sans interface graphique
 - en ssh 
@@ -9,7 +9,7 @@ Assistant Snips en Python3 pour Debian Buster
     su -
     apt install sudo
     adduser <user> sudo
-    apt install tree mc htop git virtualenv als-utils
+    apt install tree mc htop git virtualenv alsa-utils
     reboot
 ```
 
@@ -83,3 +83,16 @@ Vérifier que tous les services snips sont OK
 
     sudo systemctl status snips-*
 
+### Test Audio
+
+- Vérifier qu'une carte son a bien été trouvée
+
+    ```cat /proc/asound/cards```
+
+- Générer un son synthétique
+
+    ```speaker-test -Dplug:default -c2```
+
+- Enregistrer le microphone
+
+    ```arecord -d 5 -f S16_LE -r 44100 test-mic.wav```

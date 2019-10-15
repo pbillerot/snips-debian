@@ -69,17 +69,24 @@ J'utilise **VSCodium** pour éditer le projet en sftp (sftp://user@ip)
 __Création de l'environnement virtuel python__
 
 Se positionner sous ```/var/lib/snips/skills/<projet>/```
-    virtualenv -P python3 venv
+    virtualenv -p python3 venv
     source venv/bin/activate
     pip install hermes-python requests configparser
     cp config.ini.default config.ini
 
+Pour VSCodium
+    pip install pylint rope
 
 ### Initialisation de l'assistant
 
-    sudo systemctl restart snips-skill-server
+    # Des problèmes pour faire fonctionner ces process en tant que service
+    # Je les arrête
+    sudo systemctl disable snips-audio-server.service
+    sudo systemctl disable snips-skill-server.service
+    sudo systemctl stop snips-audio-server.service
+    sudo systemctl stop snips-skill-server.service
 
-Vérifier que tous les services snips sont OK
+Vérifier que tous les autres services snips sont OK
 
     sudo systemctl status snips-*
 
@@ -96,3 +103,13 @@ Vérifier que tous les services snips sont OK
 - Enregistrer le microphone
 
     ```arecord -d 5 -f S16_LE -r 44100 test-mic.wav```
+
+## Test
+```
+```
+```
+# Dans 3 terminaux différents
+snips-watch --mqtt -vv
+snips-skill-server -vvv
+snips-audio-server
+```

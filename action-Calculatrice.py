@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import logging
 
 from snipsTools import SnipsConfigParser
 from hermes_python.hermes import Hermes
@@ -33,9 +34,7 @@ class Calculatrice(object):
         self.start_blocking()
 
     @staticmethod
-    def addition_callback(self,
-                          hermes: Hermes,
-                          intent_message: IntentMessage):
+    def addition_callback(hermes: Hermes, intent_message: IntentMessage):
 
         # terminate the session first if not continue
         hermes.publish_end_session(intent_message.session_id, "")
@@ -55,6 +54,12 @@ class Calculatrice(object):
             h.subscribe_intent('pbillerot:Addition', self.addition_callback)\
             .loop_forever()
 
+# def info(message):
+#   app.logger.info(message)
+# def error(message):
+#   app.logger.error(message)
+# def debug(message):
+#   app.logger.debug(message)
 
 if __name__ == "__main__":
     Calculatrice()

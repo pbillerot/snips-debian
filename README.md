@@ -111,5 +111,5 @@ Vérifier que tous les autres services snips sont OK
 # Dans 3 terminaux différents
 snips-watch --mqtt -vv
 snips-skill-server -vvv
-snips-audio-server
+snips-audio-server -vv
 ```

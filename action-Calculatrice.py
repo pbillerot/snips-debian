@@ -46,7 +46,7 @@ class Calculatrice(object):
         # if need to speak the execution result by tts
         hermes.publish_start_session_notification(
             intent_message.site_id,
-            "Action 1", "Calculatrice_APP")
+            "Enfin, qulqu'un me donne du travail. Merci beaucoup!!!", "Calculatrice_APP")
 
     # register callback function to its intent and start listen to MQTT bus
     def start_blocking(self):
